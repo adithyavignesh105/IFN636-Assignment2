@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "a33f336f-c4c4-4432-8526-9ed856691cdc",
+		"name": "IFN636 Assignment 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21819310",
+		"_collection_link": "https://speeding-equinox-154809.postman.co/workspace/New-Team-Workspace~18684056-ca6f-43df-95cc-d7d243c261d2/collection/21819310-a33f336f-c4c4-4432-8526-9ed856691cdc?action=share&source=collection_link&creator=21819310"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "email",
+						"value": "manager@gmail.com",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "manager@124",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"User1\",\r\n  \"email\": \"user1@example.com\",\r\n  \"password\": \"Pass123!\",\r\n  \"role\": \"Employee\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "user1@example.com",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "Pass123",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "User",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"user9@example.com\",\r\n  \"password\": \"Pass123!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGZhMmViYjlkOTAzZjJkMzJmZDEzZCIsInJvbGUiOiJFbXBsb3llZSIsImlhdCI6MTc1OTQ4NzI4NywiZXhwIjoxNzU5NDkwODg3fQ.UdO-_--KRUNx7lck6QZ2zxsyvIjvhTh1lKcHHa972-c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign Shift",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGNkODNiOGQ1MWQ0MDU5YzdhMzZjNiIsInJvbGUiOiJNYW5hZ2VyIiwiaWF0IjoxNzU5NDg3NTM3LCJleHAiOjE3NTk0OTExMzd9.7kez8dCNKxGK5uoTfqG3GR2OGx6BvR7kflIqHfYNqG0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"userId\": \"68dfa2ebb9d903f2d32fd13d\", \"date\": \"2025-10-05T09:00:00.000Z\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/shifts/assign",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"shifts",
+						"assign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View all shifts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGNkODNiOGQ1MWQ0MDU5YzdhMzZjNiIsInJvbGUiOiJNYW5hZ2VyIiwiaWF0IjoxNzU5NDg3NTM3LCJleHAiOjE3NTk0OTExMzd9.7kez8dCNKxGK5uoTfqG3GR2OGx6BvR7kflIqHfYNqG0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"userId\": \"68dfa2ebb9d903f2d32fd13d\", \"date\": \"2025-10-05T09:00:00.000Z\" }"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/shifts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"shifts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Leave Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "View All leaves",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGNkODNiOGQ1MWQ0MDU5YzdhMzZjNiIsInJvbGUiOiJNYW5hZ2VyIiwiaWF0IjoxNzU5NDg3NTM3LCJleHAiOjE3NTk0OTExMzd9.7kez8dCNKxGK5uoTfqG3GR2OGx6BvR7kflIqHfYNqG0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/leaves",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"leaves"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
