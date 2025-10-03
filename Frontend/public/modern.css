@@ -1,0 +1,553 @@
+
+/* ====== Modern UI Theme (no JS changes) ====== */
+:root{
+  --color-bg: #f5f7fa;
+  --color-surface: #ffffff;
+  --color-text: #1f2937;      /* gray-800 */
+  --color-muted: #6b7280;     /* gray-500 */
+  --color-primary: #1f3b60;   /* deep blue */
+  --color-primary-600:#234672;
+  --color-primary-700:#1a3353;
+  --color-accent: #10b981;    /* teal/green accent */
+  --radius: 10px;
+  --shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+*{ box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+}
+
+body{
+  margin:0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Open Sans, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Page container to keep readable line-length */
+.main-wrap{
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(16px, 3vw, 32px);
+}
+
+/* Generic card pattern for panels & lists */
+.card{
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+/* Headings */
+h1,h2,h3{
+  line-height: 1.25;
+  color: var(--color-text);
+  margin: 0 0 12px;
+}
+h1{ font-size: clamp(22px, 3vw, 28px); font-weight: 700; }
+h2{ font-size: clamp(18px, 2.4vw, 22px); font-weight: 600; color: var(--color-primary); }
+h3{ font-size: clamp(16px, 2vw, 18px); font-weight: 600; }
+
+/* Forms */
+label{
+  display:block;
+  font-weight: 600;
+  margin: 12px 0 6px;
+  color: var(--color-muted);
+}
+
+input, select, textarea{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+input:focus, select:focus, textarea:focus{
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(31,59,96,0.15);
+}
+
+/* Buttons */
+button, .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .05s ease, background-color .2s ease, box-shadow .2s ease, opacity .2s ease;
+  box-shadow: 0 8px 16px rgba(31,59,96,0.15);
+}
+button:hover, .btn:hover{
+  background: var(--color-primary-600);
+}
+button:active, .btn:active{
+  transform: translateY(1px);
+  background: var(--color-primary-700);
+}
+button:disabled{
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* Secondary button look (for cancel/back) */
+.btn-secondary{
+  background: #f3f4f6;
+  color: var(--color-text);
+  box-shadow: none;
+}
+.btn-secondary:hover{ background:#e5e7eb; }
+
+/* Links */
+a{
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color .2s ease, opacity .2s ease;
+}
+a:hover{ color: var(--color-primary-600); text-decoration: underline; }
+
+/* Lists as cards/rows */
+ul{ list-style: none; margin: 0; padding: 0; }
+li.row{
+  background: var(--color-surface);
+  border: 1px solid #eef2f7;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+li.row:hover{ box-shadow: var(--shadow); transform: translateY(-1px); }
+
+/* Simple responsive grid for two-column layouts on larger screens */
+.grid-2{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 768px){
+  .grid-2{ grid-template-columns: 1fr 1fr; }
+}
+
+/* Header bar (if a header element exists) */
+header.appbar{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(90deg, var(--color-primary), #213e67);
+  color: #fff;
+  padding: 12px 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+header.appbar .brand{
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+header.appbar .spacer{ flex: 1; }
+
+/* Utility spacing */
+.mt-1{ margin-top: 4px; }
+.mt-2{ margin-top: 8px; }
+.mt-3{ margin-top: 12px; }
+.mt-4{ margin-top: 16px; }
+.mt-6{ margin-top: 24px; }
+
+.p-2{ padding: 8px; }
+.p-3{ padding: 12px; }
+.p-4{ padding: 16px; }
+.p-6{ padding: 24px; }
+
+.text-muted{ color: var(--color-muted); }
+
+/* Tables (if present) */
+table{
+  width:100%;
+  border-collapse: collapse;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+th, td{
+  padding: 12px 14px;
+  border-bottom: 1px solid #eef2f7;
+  text-align: left;
+}
+thead th{
+  background:#f8fafc;
+  font-weight:700;
+  color: #374151;
+}
+tr:last-child td{ border-bottom: none; }
+
+/* Toasts / messages (if used) */
+.alert{
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin: 8px 0;
+}
+.alert-success{ background: #ecfdf5; color: #065f46; }
+.alert-error{ background: #fef2f2; color: #991b1b; }
+
+/* Make images and media responsive */
+img, video{ max-width: 100%; height: auto; display: block; }
+
+
+/* Default app container without touching JSX */
+#root > * {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(16px, 3vw, 32px);
+}
+
+/* Style any top-level nav/header containers if they exist by role/landmark */
+[role="banner"], nav[aria-label], header {
+  background: linear-gradient(90deg, var(--color-primary), #213e67);
+  color: #fff;
+  padding: 12px 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+/* Buttons inside list rows spaced nicely */
+li.row > *:last-child button{
+  margin-left: 8px;
+}
+
+
+/* ===== Advanced Auth Page Styling with Bootstrap-friendly look ===== */
+
+/* Full-page centering shell for any view that contains a login-like form */
+#root > *:has(> form:has(input[type="email"]):has(input[type="password"])){
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 3vw, 40px);
+  background: radial-gradient(1200px 600px at 10% 0%, rgba(31,59,96,0.10), transparent),
+              radial-gradient(1200px 600px at 90% 100%, rgba(16,185,129,0.10), transparent),
+              var(--color-bg);
+}
+
+/* Style the login form itself as a polished card */
+#root form:has(input[type="email"]):has(input[type="password"]){
+  width: min(420px, 92vw);
+  background: var(--color-surface);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(31,59,96,0.15);
+  padding: 22px 22px 18px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp .5s ease both;
+}
+
+/* Decorative top bar */
+#root form:has(input[type="email"]):has(input[type="password"])::before{
+  content:"";
+  position:absolute; inset:0 auto auto 0;
+  height: 4px; width: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+/* Title (if the page has a heading immediately above the form, style it) */
+#root form:has(input[type="email"]):has(input[type="password"]) ~ p,
+#root form:has(input[type="email"]):has(input[type="password"]) h1,
+#root form:has(input[type="email"]):has(input[type="password"]) h2{
+  text-align:center;
+}
+
+/* Inputs: modern (Bootstrap-like) look with animated focus */
+#root form:has(input[type="email"]):has(input[type="password"]) input[type="email"],
+#root form:has(input[type="email"]):has(input[type="password"]) input[type="password"]{
+  appearance: none;
+  display:block;
+  width:100%;
+  padding: 12px 14px;
+  margin: 10px 0 14px;
+  border-radius: 10px;
+  border: 1px solid #dbe3ef;
+  background: #fff;
+  color: var(--color-text);
+  transition: border-color .25s ease, box-shadow .25s ease, transform .06s ease;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+/* Placeholder color */
+#root form:has(input[type="email"]):has(input[type="password"]) input::placeholder{
+  color: #94a3b8;
+}
+
+/* Focus glow */
+#root form:has(input[type="email"]):has(input[type="password"]) input:focus{
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(31,59,96,0.15);
+}
+
+/* Animated underline accent using a sibling span automatically injected via CSS pseudo (wrapper not available):
+   simulate with background-size trick */
+#root form:has(input[type="email"]):has(input[type="password"]) input{
+  background-image: linear-gradient(var(--color-accent), var(--color-accent));
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+  background-size: 0% 2px;
+}
+#root form:has(input[type="email"]):has(input[type="password"]) input:focus{
+  background-size: 100% 2px;
+}
+
+/* Submit button with transitions */
+#root form:has(input[type="email"]):has(input[type="password"]) button[type="submit"]{
+  width:100%;
+  background: var(--color-primary);
+  color:#fff;
+  border:none;
+  padding: 12px 16px;
+  margin-top: 4px;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  box-shadow: 0 10px 18px rgba(31,59,96,0.2);
+  transition: background-color .25s ease, transform .08s ease, box-shadow .25s ease;
+}
+#root form:has(input[type="email"]):has(input[type="password"]) button[type="submit"]:hover{
+  background: var(--color-primary-600);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 24px rgba(31,59,96,0.25);
+}
+#root form:has(input[type="email"]):has(input[type="password"]) button[type="submit"]:active{
+  transform: translateY(0);
+  box-shadow: 0 8px 14px rgba(31,59,96,0.2) inset;
+}
+
+/* Error message styling if present */
+#root form:has(input[type="email"]):has(input[type="password"]) .error{
+  margin: 10px 0 0;
+  color: #b91c1c;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: .95rem;
+}
+
+/* Link under form (e.g., register link) */
+#root form:has(input[type="email"]):has(input[type="password"]) + p{
+  text-align: center;
+  margin-top: 12px;
+  color: var(--color-muted);
+}
+#root form:has(input[type="email"]):has(input[type="password"]) + p a{
+  font-weight: 600;
+}
+
+/* Page entrance animation */
+@keyframes fadeInUp{
+  from{ opacity:0; transform: translateY(12px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+
+/* ===== Manager Dashboard – Cleaner UI (no JS changes) ===== */
+#root > div:has(> section){
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+@media (min-width: 768px){
+  #root > div:has(> section){
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  }
+}
+#root > div > section{
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(14px, 2.4vw, 20px);
+  border: 1px solid #eef2f7;
+}
+#root > div > section > h3{
+  position: relative;
+  margin: 0 0 12px;
+  padding-left: 12px;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+#root > div > section > h3::before{
+  content: "";
+  position: absolute;
+  left: 0; top: 4px; bottom: 4px;
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+}
+#root > div > section form{ display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 640px){
+  #root > div > section form{ grid-template-columns: 1fr 1fr; }
+}
+#root > div > section form select,
+#root > div > section form input[type="date"],
+#root > div > section form input[type="text"],
+#root > div > section form input[type="number"]{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #dbe3ef;
+  background: #fff;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+#root > div > section form select:focus,
+#root > div > section form input:focus{
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(31,59,96,0.12);
+  outline: none;
+}
+#root > div > section form button{
+  grid-column: 1 / -1;
+  justify-self: end;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: background-color .25s ease, transform .06s ease, box-shadow .25s ease;
+  box-shadow: 0 8px 16px rgba(31,59,96,0.18);
+}
+#root > div > section form button:hover{
+  background: var(--color-primary-600);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 20px rgba(31,59,96,0.22);
+}
+#root > div > section ul{ list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+#root > div > section ul > li{
+  background: #fff;
+  border: 1px solid #eef2f7;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  justify-content: space-between;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+#root > div > section ul > li:hover{ box-shadow: var(--shadow); transform: translateY(-1px); }
+#root > div > section ul > li button{
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 6px 12px rgba(31,59,96,0.18);
+  transition: background-color .2s ease, transform .06s ease, box-shadow .2s ease;
+}
+#root > div > section ul > li button:hover{
+  background: var(--color-primary-600);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 16px rgba(31,59,96,0.22);
+}
+#root > div > section ul > li button + button{
+  background: #f3f4f6;
+  color: #b91c1c;
+  box-shadow: none;
+  border: 1px solid #f1d0d0;
+}
+#root > div > section ul > li button + button:hover{
+  background: #fee2e2;
+  border-color: #fecaca;
+}
+#root > div > section ul:empty::after{
+  content: "No items to show";
+  display: block;
+  color: var(--color-muted);
+  background: #f8fafc;
+  border: 1px dashed #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+#root > div > h2{ font-weight: 800; letter-spacing: .2px; margin: 0 0 8px; color: var(--color-text); }
+
+
+/* ===== Manager Dashboard – Status Badges & Item Counters (CSS-only) ===== */
+
+/* Prepare sections for positioned decorations */
+#root > div:has(> section) > section{
+  position: relative;
+}
+
+/* Count items in each section's list and display as a pill at the top-right */
+#root > div > section ul{ counter-reset: items; }
+#root > div > section ul > li{ counter-increment: items; }
+#root > div > section ul::after{
+  content: counter(items) " items";
+  position: absolute;
+  top: 12px; right: 12px;
+  font-size: 0.85rem;
+  color: #0f172a;
+  background: #e2e8f0;
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+/* Add a status chip before list text using section order.
+   NOTE: relies on the section order in ManagerDashboard.jsx:
+   1) All Shifts, 2) Assign New Shift, 3) Pending Leave Approvals, 4) Pending Swap Approvals */
+#root > div > section:nth-of-type(3) ul > li::before,
+#root > div > section:nth-of-type(4) ul > li::before{
+  content: "Pending";
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 0.78rem;
+  line-height: 1;
+  color: #92400e;
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+/* Optional: Distinguish swap approvals with a different chip hue */
+#root > div > section:nth-of-type(4) ul > li::before{
+  content: "Swap Pending";
+  color: #065f46;
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+/* Style for role/metadata chips if any text wrappers exist (generic utility) */
+.badge, .chip{
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  background: #e5e7eb;
+  color: #374151;
+}
+
+/* Subtle divider between groups inside a section (if multiple ULs appear) */
+#root > div > section > ul + ul{
+  margin-top: 8px;
+  border-top: 1px dashed #e5e7eb;
+  padding-top: 8px;
+}
